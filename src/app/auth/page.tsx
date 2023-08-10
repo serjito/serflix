@@ -7,11 +7,11 @@ import {
 } from "firebase/auth";
 import { auth } from "@/firebase";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../redux/features/AuthSlice";
+import { login } from "../../redux/features/AuthSlice";
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 
-function Auth() {
+function AuthPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -40,29 +40,38 @@ function Auth() {
     try {
       setError("");
       if (variant === "register") {
-        await createUserWithEmailAndPassword(auth, email, password);
-        resetForm();
-        router.push("/auth");
-
-        const user = auth.currentUser;
-        if (user) {
-          dispatch(setUser(user));
-        }
+        const user = await createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            updateProfile(user, { displayName: name });
+          })
+          .finally(() => {
+            resetForm();
+            setVariant("login");
+          });
 
         console.log("Usuario registrado exitosamente:", email, name);
         console.log(email);
         console.log(name);
       } else {
-        await signInWithEmailAndPassword(auth, email, password);
-        resetForm();
-        router.push("/home");
-
-        const user = auth.currentUser;
-        if (user) {
-          dispatch(setUser(user));
+        const response = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        if (response) {
+          resetForm();
+          router.push("/home");
+          dispatch(
+            login({
+              email: response.user.email,
+              displayName: response.user?.displayName,
+              token: response.user.refreshToken,
+            })
+          );
         }
-
-        console.log(email);
+        console.log(response);
+        console.log(response.user.email);
       }
     } catch (error: any) {
       setError("Incorrect email or password");
@@ -130,4 +139,4 @@ function Auth() {
   );
 }
 
-export default Auth;
+export default AuthPage;

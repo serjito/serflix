@@ -15,7 +15,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
   useEffect(() => {
     const user = auth.currentUser;
     if (user) {
-      setUsername(user.email || "");
+      setUsername(user.displayName || "");
     }
   }, []);
 
