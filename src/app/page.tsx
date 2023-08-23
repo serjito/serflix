@@ -3,7 +3,6 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { useAppDispatch } from "../redux/hooks";
 import { login, logout } from "../redux/features/AuthSlice";
-import { auth } from "@/firebase";
 import AuthPage from "./auth/page";
 
 export default function Index() {
