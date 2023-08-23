@@ -5,11 +5,12 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "@/firebase";
+import { auth, db } from "@/firebase";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/features/AuthSlice";
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
+import { setDoc, doc } from "firebase/firestore";
 
 function AuthPage() {
   const router = useRouter();
@@ -49,10 +50,9 @@ function AuthPage() {
             resetForm();
             setVariant("login");
           });
-
-        console.log("Usuario registrado exitosamente:", email, name);
-        console.log(email);
-        console.log(name);
+        await setDoc(doc(db, "users", email), {
+          savedShows: [],
+        });
       } else {
         const response = await signInWithEmailAndPassword(
           auth,
