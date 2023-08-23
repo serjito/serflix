@@ -3,14 +3,14 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBdyFrSZJ5btIZ44UT8uzUXcVwUUBYMbyY",
-  authDomain: "serflix-a0264.firebaseapp.com",
-  projectId: "serflix-a0264",
-  storageBucket: "serflix-a0264.appspot.com",
-  messagingSenderId: "845195220375",
-  appId: "1:845195220375:web:8080aa0eda17147421a0d2",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 export const auth = getAuth(app);
