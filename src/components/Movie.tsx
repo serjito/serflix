@@ -12,7 +12,7 @@ interface MovieProps {
 const Movie: React.FC<MovieProps> = ({ item }) => {
   const [like, setLike] = useState();
   return (
-    <div className="w-[160px] sm:w-[240px] lg:w-[280px] inline-block gap-3 cursor-pointer relative p-2 bg-red-600">
+    <div className="w-[160px] sm:w-[240px] lg:w-[280px] inline-block gap-3 cursor-pointer relative p-2">
       <img
         className="w-full h-auto block"
         src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}

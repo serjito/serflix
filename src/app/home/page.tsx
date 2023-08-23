@@ -14,7 +14,7 @@ const Home: React.FC<HomeProps> = ({ title, fetchURL, rowID }) => {
     <>
       <Navbar />
       <Billboard />
-      <div className="pb-80 my-6">
+      <div className="pb-8 my-6">
         <MovieList
           rowID="1"
           title="UpComing"

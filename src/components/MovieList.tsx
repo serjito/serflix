@@ -42,9 +42,9 @@ const MovieList: React.FC<MovieListProps> = ({ title, fetchURL, rowID }) => {
   return (
     <>
       <h2 className="text-pink-300 font-bold md:text-xl p-4">{title}</h2>
-      <div className="relative flex items-center group bg-green-600 ">
+      <div className="relative flex items-center group ">
         <MdChevronLeft
-          className="bg-pink-600 left-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
+          className="bg-pink-600 left-3 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
           size={40}
           onClick={slideLeft}
         />
@@ -58,7 +58,7 @@ const MovieList: React.FC<MovieListProps> = ({ title, fetchURL, rowID }) => {
           ))}
         </div>
         <MdChevronRight
-          className="bg-pink-600 right-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
+          className="bg-pink-600 right-3 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
           size={40}
           onClick={slideRight}
         />
