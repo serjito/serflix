@@ -1,11 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import NavbarItem from "@/components/NavbarItem";
 import { BsChevronDown, BsSearch } from "react-icons/bs";
-import Image from "next/image";
+
 import MobileMenu from "@/components/MobileMenu";
 import AccountMenu from "@/components/AccountMenu";
 import { useCallback, useEffect, useState } from "react";
-import { current } from "@reduxjs/toolkit";
+import Link from "next/link";
 
 const TOP_OFFSET = 66;
 
@@ -38,7 +39,10 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="w-full fixed z-40">
+    <nav
+      className="w-full fixed z-40"
+      style={{ position: "fixed", zIndex: 9999 }}
+    >
       <div
         className={`
       px-4
@@ -54,10 +58,12 @@ const Navbar = () => {
       >
         <img className="h-16 lg:h-20" src="/images/LOGO.png" alt="" />
         <div className="flex-row ml-8 gap-7 hidden lg:flex">
-          <NavbarItem label="Home" />
-          <NavbarItem label="Series" />
-          <NavbarItem label="Films" />
-          <NavbarItem label="My list" />
+          <Link href="/home">
+            <NavbarItem label="Home" />
+          </Link>
+          <Link href="/account">
+            <NavbarItem label="My list" />
+          </Link>
         </div>
         <div
           onClick={toggleMobileMenu}

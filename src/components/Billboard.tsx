@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useEffect, useState } from "react";
 import request from "@/request";
@@ -40,7 +41,7 @@ const Billboard = () => {
   return (
     <div className="relative h-[30.25vw]">
       <img
-        className="w-full h-[90] object-cover brightness-[30%]"
+        className="w-full h-90 object-cover brightness-[30%]"
         src={`https://image.tmdb.org/t/p/original/${currentMovie.backdrop_path}`}
         alt={currentMovie.title || "Movie Backdrop"}
       ></img>

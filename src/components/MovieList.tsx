@@ -15,6 +15,7 @@ interface Movie {
   id: string;
   backdrop_path: string;
   title: string;
+  overview: string;
 }
 
 const MovieList: React.FC<MovieListProps> = ({ title, fetchURL, rowID }) => {
@@ -42,7 +43,12 @@ const MovieList: React.FC<MovieListProps> = ({ title, fetchURL, rowID }) => {
 
   return (
     <>
-      <h2 className="text-pink-300 font-bold md:text-xl p-4">{title}</h2>
+      <h2
+        className="text-pink-600 font-bold md:text-xl p-4"
+        style={{ position: "relative", zIndex: 999 }}
+      >
+        {title}
+      </h2>
       <div className="relative flex items-center group ">
         <MdChevronLeft
           className="bg-pink-600 left-3 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
@@ -9,6 +10,7 @@ interface MovieProps {
     id: string;
     backdrop_path: string;
     title: string;
+    overview: string;
   };
 }
 
@@ -28,6 +30,7 @@ const Movie: React.FC<MovieProps> = ({ item }) => {
           id: item.id,
           title: item.title,
           img: item.backdrop_path,
+          description: item.overview,
         }),
       });
     } else {

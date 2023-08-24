@@ -30,6 +30,23 @@ const Home: React.FC<HomeProps> = ({ title, fetchURL, rowID }) => {
           title="Trending"
           fetchURL={request.requestTrending}
         />
+        <MovieList
+          rowID="4"
+          title="Animation"
+          fetchURL={request.requestAnimationFrame}
+        />
+        <MovieList
+          rowID="5"
+          title="Serflix Originals"
+          fetchURL={request.requestOriginals}
+        />
+        <MovieList
+          rowID="6"
+          title="Documentaries"
+          fetchURL={request.requestDocumentaries}
+        />
+        <MovieList rowID="7" title="Horror" fetchURL={request.requestHorror} />
+        <MovieList rowID="7" title="Comedy" fetchURL={request.requestComedy} />
       </div>
     </>
   );
